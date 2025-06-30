@@ -1,23 +1,17 @@
 import Marquee from "react-fast-marquee";
 import image1 from "./assets/images/PCV_3545.jpg";
-import image2 from "./assets/images/PCV_3981.jpg";
-import image3 from "./assets/images/PCV_3586.jpg";
+import image2 from "./assets/images/PCV_3785.jpg";
+import image3 from "./assets/images/PCV_3981.jpg";
 import image4 from "./assets/images/PCV_3615.jpg";
 import image5 from "./assets/images/PCV_3767.jpg";
-import image6 from "./assets/images/PCV_3640.jpg";
-import image7 from "./assets/images/PCV_3789.jpg";
-import image8 from "./assets/images/PCV_3560.jpg";
-import image9 from "./assets/images/PCV_3807.jpg";
-import image10 from "./assets/images/PCV_3976.jpg";
-import image11 from "./assets/images/PSD.jpg";
+
+
 import { useEffect, useState } from "react";
 import { ModalFrame, ModalHead, ModalBody, ModalFooter } from "./components/Modal";
 import { Heart, Mail, MessageCircle, Globe } from "lucide-react";
 
 const marqueeImages = [
-    image1, image2, image3, image4, image5, image6,
-    image7, image8, image9, image10, image11, image1, image2, image3, image4, image5, image6,
-    image7, image8, image9, image10, image11, 
+    image1, image2, image3, image4, image5, image1, image2, image3, image4, image5, image1, image2, image3, image4, image5
 ];
 
 type Note = {
@@ -388,7 +382,7 @@ export default function App() {
                     editingNote={editingNote}
                     editTimeLeft={editTimeLeft}
                     onEditNote={handleEditNote}
-                    className="lg:mt-[-0.5rem]"
+                    className=""
                 />
 
                 <NotesMarquee
