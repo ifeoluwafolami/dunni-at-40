@@ -1,21 +1,23 @@
 import Marquee from "react-fast-marquee";
 import image1 from "./assets/images/PCV_3545.jpg";
-import image2 from "./assets/images/PCV_3560.jpg";
+import image2 from "./assets/images/PCV_3981.jpg";
 import image3 from "./assets/images/PCV_3586.jpg";
-import image4 from "./assets/images/PCV_3586b.jpg";
+import image4 from "./assets/images/PCV_3615.jpg";
 import image5 from "./assets/images/PCV_3767.jpg";
-import image6 from "./assets/images/PCV_3785.jpg";
+import image6 from "./assets/images/PCV_3640.jpg";
 import image7 from "./assets/images/PCV_3789.jpg";
-import image8 from "./assets/images/PCV_3798.jpg";
+import image8 from "./assets/images/PCV_3560.jpg";
 import image9 from "./assets/images/PCV_3807.jpg";
-import image10 from "./assets/images/PCV_3813.jpg";
+import image10 from "./assets/images/PCV_3976.jpg";
 import image11 from "./assets/images/PSD.jpg";
 import { useEffect, useState } from "react";
 import { ModalFrame, ModalHead, ModalBody, ModalFooter } from "./components/Modal";
+import { Heart, Mail, MessageCircle, Globe } from "lucide-react";
 
 const marqueeImages = [
     image1, image2, image3, image4, image5, image6,
-    image7, image8, image9, image10, image11
+    image7, image8, image9, image10, image11, image1, image2, image3, image4, image5, image6,
+    image7, image8, image9, image10, image11, 
 ];
 
 type Note = {
@@ -178,6 +180,7 @@ export default function App() {
     const [notes, setNotes] = useState<Note[]>([]);
     const [loading, setLoading] = useState(true);
     const [showNoteModal, setShowNoteModal] = useState(false);
+    const [showContactModal, setShowContactModal] = useState(false);
     const [noteMessage, setNoteMessage] = useState("");
     const [noteSignature, setNoteSignature] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -314,6 +317,27 @@ export default function App() {
     };
 
     const closeModal = () => setShowNoteModal(false);
+    const closeContactModal = () => setShowContactModal(false);
+    const openContactModal = () => setShowContactModal(true);
+
+    const handleContactClick = (type: string, value: string) => {
+        switch (type) {
+            case 'email':
+                window.open(`mailto:${value}`, '_blank');
+                break;
+            case 'phone':
+                window.open(`tel:${value}`, '_blank');
+                break;
+            case 'whatsapp':
+                window.open(`https://wa.me/${value}`, '_blank');
+                break;
+            case 'website':
+                window.open(value, '_blank');
+                break;
+            default:
+                break;
+        }
+    };
 
     if (loading) return null;
 
@@ -323,13 +347,13 @@ export default function App() {
 
             {/* Gallery Section */}
             <div className="lg:min-h-screen bg-white flex flex-col gap-2 py-8 lg:py-8 justify-center items-center">
-                <h1 className="font-carattere text-4xl px-4 text-center lg:text-6xl text-transparent bg-gradient-to-br from-text via-accent-pink to-text bg-clip-text drop-shadow-lg leading-12 lg:leading-20 lg:mb-4">
+                <h1 className="font-carattere text-4xl px-4 text-center lg:text-6xl text-transparent bg-gradient-to-br from-text via-accent-pink to-text bg-clip-text drop-shadow-lg leading-12 lg:leading-20 mb-4">
                     Forty never looked this good!
                 </h1>
 
                 <Marquee
                     gradient={false}
-                    speed={50}
+                    speed={80}
                     pauseOnHover={true}
                     className="mt-2 lg:h-85 mb-4 flex flex-col justify-center items-center overflow-hidden"
                 >
@@ -381,6 +405,19 @@ export default function App() {
                     className="mt-4 px-8 py-4 bg-text text-light-pink font-liberty font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 >
                     💌 Leave a Note
+                </button>
+            </div>
+
+            {/* Footer */}
+            <div className="bg-text text-light-pink w-full flex justify-center items-center h-20">
+                <p>Made with</p> 
+                <Heart className="h-4 w-4 mx-1" /> 
+                <p>by</p>
+                <button
+                    onClick={openContactModal}
+                    className="ml-1 text-light-pink hover:text-accent-pink underline underline-offset-2 hover:underline-offset-4 transition-all duration-200 font-medium"
+                >
+                    Ifeoluwa Folami
                 </button>
             </div>
 
@@ -451,6 +488,73 @@ export default function App() {
                             className="px-6 py-2 bg-gradient-to-r from-text to-accent-pink text-white rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                         >
                             {isSubmitting ? (editingNote ? 'Updating...' : 'Submitting...') : (editingNote ? 'Update Note' : 'Submit Note')}
+                        </button>
+                    </ModalFooter>
+                </ModalFrame>
+            )}
+
+            {/* Contact Modal */}
+            {showContactModal && (
+                <ModalFrame onClose={closeContactModal} open={showContactModal}>
+                    <ModalHead>
+                        Contact Developer
+                    </ModalHead>
+                    <ModalBody>
+                        <div className="space-y-6">
+                            <div className="text-center">
+                                <h3 className="text-xl font-semibold text-gray-800 mb-2">Ifeoluwa Folami</h3>
+                                <p className="text-gray-600 mb-4">Full Stack Developer</p>
+                            </div>
+                            
+                            <div className="space-y-4">
+                                <button
+                                    onClick={() => handleContactClick('email', 'folamihephzibah@gmail.com')}
+                                    className="w-full flex items-center gap-4 p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors group"
+                                >
+                                    <Mail className="h-5 w-5 text-gray-600 group-hover:text-accent-pink transition-colors" />
+                                    <div className="text-left">
+                                        <p className="font-medium text-gray-800">Email</p>
+                                        <p className="text-sm text-gray-600">folamihephzibah@gmail.com</p>
+                                    </div>
+                                </button>
+
+
+                                <button
+                                    onClick={() => handleContactClick('whatsapp', '+2348138041811')}
+                                    className="w-full flex items-center gap-4 p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors group"
+                                >
+                                    <MessageCircle className="h-5 w-5 text-gray-600 group-hover:text-accent-pink transition-colors" />
+                                    <div className="text-left">
+                                        <p className="font-medium text-gray-800">WhatsApp</p>
+                                        <p className="text-sm text-gray-600">Send a message</p>
+                                    </div>
+                                </button>
+
+                                <button
+                                    onClick={() => handleContactClick('website', 'https://www.linkedin.com/in/ifeoluwafolami')}
+                                    className="w-full flex items-center gap-4 p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors group"
+                                >
+                                    <Globe className="h-5 w-5 text-gray-600 group-hover:text-accent-pink transition-colors" />
+                                    <div className="text-left">
+                                        <p className="font-medium text-gray-800">LinkedIn</p>
+                                        <p className="text-sm text-gray-600">www.linkedin.com/in/ifeoluwafolami</p>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div className="text-center pt-4 border-t border-gray-200">
+                                <p className="text-sm text-gray-500">
+                                    Available for freelance projects and collaborations
+                                </p>
+                            </div>
+                        </div>
+                    </ModalBody>
+                    <ModalFooter>
+                        <button
+                            onClick={closeContactModal}
+                            className="px-6 py-2 bg-text text-white rounded-lg hover:opacity-90 transition-opacity"
+                        >
+                            Close
                         </button>
                     </ModalFooter>
                 </ModalFrame>
