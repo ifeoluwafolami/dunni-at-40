@@ -45,7 +45,7 @@ const NoteCard = ({
         <div className="mx-4">
             <div 
                 data-note-id={note._id}
-                className={`bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 max-w-sm h-70 w-70 flex flex-col justify-center relative ${
+                className={`bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 max-w-sm h-75 w-75 flex flex-col justify-center relative ${
                     isEditing ? 'ring-2 ring-accent-pink' : ''
                 }`}
             >
@@ -90,7 +90,7 @@ const NotesMarquee = ({
 }) => {
     // Create display notes - either multiply if few notes, or use as-is if many
     const displayNotes = notes.length <= 10 
-        ? [...notes, ...notes, ...notes, ...notes] 
+        ? [...notes, ...notes] 
         : notes;
 
     return (
