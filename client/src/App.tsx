@@ -495,7 +495,7 @@ export default function App() {
                     </ModalHead>
                     <ModalBody>
                         <div className="space-y-6">
-                            <div className="text-center">
+                            <div className="text-start">
                                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Ifeoluwa Folami</h3>
                                 <p className="text-gray-600 mb-4">Full Stack Developer</p>
                             </div>
