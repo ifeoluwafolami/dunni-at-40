@@ -397,7 +397,7 @@ export default function App() {
                     editingNote={editingNote}
                     editTimeLeft={editTimeLeft}
                     onEditNote={handleEditNote}
-                    className="mt-[-2rem]"
+                    className=""
                 />
 
                 <button
