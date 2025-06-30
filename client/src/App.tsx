@@ -163,7 +163,7 @@ const HeroSection = () => {
                             </h1>
                             <div className="text-4xl lg:text-9xl text-text mb-4">@</div>
                         </div>
-                        <div className="text-[200px] lg:text-[250px] font-bold leading-none text-transparent bg-gradient-to-br from-text via-accent-pink to-text border-text bg-clip-text drop-shadow-lg font-liberty mt-[-3rem]">
+                        <div className="text-[200px] lg:text-[250px] font-bold leading-none text-transparent bg-text border-text bg-clip-text drop-shadow-lg font-liberty mt-[-3rem]">
                             40!
                         </div>
                     </div>
