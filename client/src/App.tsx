@@ -39,7 +39,7 @@ const NoteCard = ({
         <div className="mx-4">
             <div 
                 data-note-id={note._id}
-                className={`bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 max-w-sm h-75 w-75 flex flex-col justify-center relative ${
+                className={`bg-white px-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 max-w-sm h-78 w-78 flex flex-col justify-center relative ${
                     isEditing ? 'ring-2 ring-accent-pink' : ''
                 }`}
             >
@@ -219,7 +219,7 @@ export default function App() {
     useEffect(() => {
         const fetchNotes = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/notes`);
+                const response = await fetch(`http://localhost:3000/api/notes`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch notes.");
                 }
@@ -382,7 +382,7 @@ export default function App() {
                     editingNote={editingNote}
                     editTimeLeft={editTimeLeft}
                     onEditNote={handleEditNote}
-                    className=""
+                    className="mt-2"
                 />
 
                 <NotesMarquee
